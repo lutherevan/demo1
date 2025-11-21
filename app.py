@@ -1,4 +1,6 @@
 import streamlit as st
+import pandas as pd
+import numpy as np
 
 # -------------------------------
 # 1. Dashboard Title and Objective
@@ -86,3 +88,27 @@ st.write(f"Adjusted Revenue for {selected_quarter}: ${adjusted_revenue:.2f}M")
 # -------------------------------
 if st.button("Show Motivation"):
     st.success("Keep pushing for growth! 🚀")
+
+
+
+
+
+
+
+
+# Create a random DataFrame
+np.random.seed(42)  # (optional) make results reproducible
+data = pd.DataFrame({
+    "Day": pd.date_range(start="2025-01-01", periods=30, freq="D"),
+    "Visitors": np.random.randint(50, 200, 30),
+    "Signups": np.random.randint(10, 80, 30)
+})
+
+# Set index to Day so Streamlit can plot it nicely
+data = data.set_index("Day")
+
+st.write("### Example Random Dataset")
+st.dataframe(data)
+
+st.write("### Area Chart Example")
+st.area_chart(data)
