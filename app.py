@@ -1,62 +1,88 @@
 import streamlit as st
-import pandas as pd
-import matplotlib.pyplot as plt
-import numpy as np
 
 # -------------------------------
-# Title and Description
+# 1. Dashboard Title and Objective
 # -------------------------------
-st.title("📊 Business Sales Dashboard")
-st.write("Analyze monthly sales data interactively!")
+st.title("Business Performance Dashboard")
+st.write("Objective: This dashboard provides insights into revenue, customer feedback, and market trends for better business decisions.")
 
 # -------------------------------
-# Sample Data
+# 2. Columns Layout for Quarterly Revenue
 # -------------------------------
-months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
-sales = np.random.randint(5000, 20000, size=12)
-expenses = np.random.randint(3000, 15000, size=12)
-
-data = pd.DataFrame({
-    "Month": months,
-    "Sales": sales,
-    "Expenses": expenses
-})
-
-# -------------------------------
-# Sidebar Filters
-# -------------------------------
-st.sidebar.header("Filters")
-selected_months = st.sidebar.multiselect("Select Months", months, default=months)
-show_expenses = st.sidebar.checkbox("Show Expenses", value=True)
-
-# Filter data
-filtered_data = data[data["Month"].isin(selected_months)]
-
-# -------------------------------
-# Display Data Table
-# -------------------------------
-st.subheader("Filtered Data")
-st.dataframe(filtered_data)
-
-# -------------------------------
-# Interactive Chart
-# -------------------------------
-st.subheader("Sales Chart")
-fig, ax = plt.subplots()
-ax.plot(filtered_data["Month"], filtered_data["Sales"], marker='o', label="Sales")
-if show_expenses:
-    ax.plot(filtered_data["Month"], filtered_data["Expenses"], marker='o', label="Expenses")
-ax.set_title("Monthly Performance")
-ax.set_xlabel("Month")
-ax.set_ylabel("Amount ($)")
-ax.legend()
-st.pyplot(fig)
-
-# -------------------------------
-# KPI Metrics
-# -------------------------------
-st.subheader("Key Metrics")
+st.subheader("Quarterly Revenue Overview")
 col1, col2, col3 = st.columns(3)
-col1.metric("Total Sales", f"${filtered_data['Sales'].sum():,.0f}")
-col2.metric("Total Expenses", f"${filtered_data['Expenses'].sum():,.0f}")
-col3.metric("Profit", f"${(filtered_data['Sales'].sum() - filtered_data['Expenses'].sum()):,.0f}")
+
+with col1:
+    st.header("Q1 2024")
+    st.write("Revenue: $1.2M")
+with col2:
+    st.header("Q2 2024")
+    st.write("Revenue: $1.5M")
+with col3:
+    st.header("Q3 2024")
+    st.write("Revenue: $1.3M")
+
+# -------------------------------
+# 3. Tabs for Different Business Sections
+# -------------------------------
+tab1, tab2, tab3 = st.tabs(["Sales Data", "Customer Insights", "Market Trends"])
+
+with tab1:
+    st.write("### Sales Data")
+    sales_data = {
+        "Q1 2024": "$1.2M",
+        "Q2 2024": "$1.5M",
+        "Q3 2024": "$1.3M",
+        "Q4 2024": "$1.6M"
+    }
+    for quarter, revenue in sales_data.items():
+        st.write(f"{quarter}: {revenue}")
+    st.bar_chart({"Revenue (in M$)": [1.2, 1.5, 1.3, 1.6]}, height=200)
+
+with tab2:
+    st.write("### Customer Insights")
+    customer_feedback = [
+        "Great service!",
+        "Very satisfied with the product quality.",
+        "Quick delivery and excellent support."
+    ]
+    for feedback in customer_feedback:
+        st.write(f"- {feedback}")
+
+with tab3:
+    st.write("### Market Trends")
+    market_trends = {
+        "Eco-friendly products": "Increasing demand",
+        "Online shopping": "Continued growth",
+        "Subscription services": "Rising popularity"
+    }
+    for trend, status in market_trends.items():
+        st.write(f"{trend}: {status}")
+
+# -------------------------------
+# 4. Expander for Additional Information
+# -------------------------------
+with st.expander("More Information"):
+    st.write("Data was collected through surveys, customer feedback forms, and official sales reports.")
+
+# -------------------------------
+# 5. Add Interactivity
+# -------------------------------
+st.subheader("Interactive Revenue Checker")
+quarters = ["Q1 2024", "Q2 2024", "Q3 2024", "Q4 2024"]
+selected_quarter = st.selectbox("Select a quarter:", quarters)
+
+# Display revenue dynamically
+st.write(f"Revenue for {selected_quarter}: {sales_data[selected_quarter]}")
+
+# Bonus: Growth adjustment
+growth = st.slider("Adjust growth percentage:", 0, 50, 10)
+base_revenue = float(sales_data[selected_quarter].strip("$M"))
+adjusted_revenue = base_revenue * (1 + growth / 100)
+st.write(f"Adjusted Revenue for {selected_quarter}: ${adjusted_revenue:.2f}M")
+
+# -------------------------------
+# 6. Motivational Button
+# -------------------------------
+if st.button("Show Motivation"):
+    st.success("Keep pushing for growth! 🚀")
