@@ -21,7 +21,7 @@ data = pd.DataFrame({
     "Month": months,
     "Sales": sales,
     "Expenses": expenses
-
+})
 
 st.sidebar.header("Filters")
 selected_months = st.sidebar.multiselect("Select Months", months, default=months)
