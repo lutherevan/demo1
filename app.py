@@ -1,5 +1,7 @@
-import pandas as pd
 import streamlit as st
+import pandas as pd
+import matplotlib.pyplot as plt
+import numpy as np
 
 First_button = st.button("Click me")
 
