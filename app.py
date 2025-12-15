@@ -3,7 +3,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
 
-st.write({"Name":"Luther", "Age":21})
+age = st.number_input("Enter your age:", 18, 100, 25)
 
 First_button = st.button("Click me")
 
