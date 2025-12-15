@@ -3,6 +3,8 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
 
+st.write({"Name":"Luther", "Age":21})
+
 First_button = st.button("Click me")
 
 if First_button:
