@@ -6,9 +6,9 @@ First_button = st.button("Click me")
 if First_button:
         st.text("Button clicked!")
 
+
 name = st.text_input("Name")
 age = st.number_input("Age")
-submitted = st.form_submit_button("Submit")
 
 if submitted:
     st.write(name, age)
