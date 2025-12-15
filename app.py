@@ -3,7 +3,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
 
-age = st.number_input("Enter your age:", max_verstappen=18, 100, 25)
+age = st.success("OPERATION BARBAROSA SUCCESS")
 
 First_button = st.button("Click me")
 
