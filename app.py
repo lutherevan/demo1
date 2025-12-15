@@ -7,9 +7,33 @@ if First_button:
         st.text("Button clicked!")
 
 
+
+
+
+
+
+
+months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+sales = np.random.randint(5000, 20000, size=12)
+expenses = np.random.randint(3000, 15000, size=12)
+
+data = pd.DataFrame({
+    "Month": months,
+    "Sales": sales,
+    "Expenses": expenses
+
+
 st.sidebar.header("Filters")
 selected_months = st.sidebar.multiselect("Select Months", months, default=months)
 show_expenses = st.sidebar.checkbox("Show Expenses", value=True)
+
+
+
+
+
+
+
+             
 
 # Sample data
 data = {'Product': ['A', 'B', 'C'], 
