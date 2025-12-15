@@ -7,9 +7,9 @@ if First_button:
         st.text("Button clicked!")
 
 
-name = st.text_input("Name")
-age = st.number_input("Age")
-st.write(name, age)
+st.sidebar.header("Filters")
+selected_months = st.sidebar.multiselect("Select Months", months, default=months)
+show_expenses = st.sidebar.checkbox("Show Expenses", value=True)
 
 # Sample data
 data = {'Product': ['A', 'B', 'C'], 
