@@ -1,6 +1,14 @@
 import pandas as pd
 import streamlit as st
 
+First_button = st.button("Click me")
+
+if First_button:
+        st.text("Button clicked!")
+
+
+
+
 # Sample data
 data = {'Product': ['A', 'B', 'C'], 
         'Sales': [1200, 850, 950], 
