@@ -10,9 +10,6 @@ if First_button:
 name = st.text_input("Name")
 age = st.number_input("Age")
 
-if submitted:
-    st.write(name, age)
-
 
 # Sample data
 data = {'Product': ['A', 'B', 'C'], 
