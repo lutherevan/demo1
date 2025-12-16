@@ -13,4 +13,4 @@ selected_quarter = st.selectbox(
   "Choose Quarter:",
   ["Q1", "Q2", "Q3", "Q4"])
 
-st.write(f"Revenue for {selected_quarter}: {quarter_revenue.values(selected_quarter)}")
+st.write(f"Revenue for {selected_quarter}: {quarter_revenue.values[selected_quarter]}")
