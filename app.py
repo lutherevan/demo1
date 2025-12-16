@@ -16,3 +16,6 @@ selected_quarter = st.selectbox(
 
 
 st.write(f"Revenue for {selected_quarter}: {quarter_revenue[selected_quarter]}")
+
+if st.button("Click here for motivation"):
+  st.write("Keep pushing for growth!")
