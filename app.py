@@ -1,4 +1,4 @@
-import streamlit as st import option_menu
+cimport streamlit as st import option_menu
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
@@ -22,6 +22,6 @@ if st.button("Click here for motivation"):
   st.write("Keep pushing for growth!")
 
 with st.sidebar:
-  option_menu = ("Menu",
+  selected = option_menu("Menu",
                  ["Welcome", "Details", "Apply Now!"],
                  default_index = 0)
