@@ -1,7 +1,8 @@
-import streamlit as st
+import streamlit as st import option_menu
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
+
 
 quarter_revenue = {
   "Q1": "1.3M",
@@ -19,3 +20,8 @@ st.write(f"Revenue for {selected_quarter}: {quarter_revenue[selected_quarter]}")
 
 if st.button("Click here for motivation"):
   st.write("Keep pushing for growth!")
+
+with st.sidebar:
+  option_menu = ("Menu",
+                 ["Welcome", "Details", "Apply Now!"],
+                 default_index = 0)
